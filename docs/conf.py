@@ -1,4 +1,5 @@
 """Sphinx configuration."""
+
 project = "django-stripe"
 author = "Abe Hanoka"
 copyright = "2024, Abe Hanoka"

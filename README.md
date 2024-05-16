@@ -28,7 +28,6 @@ the database.
 This package aims to provide a simple way to handle
 stripe webhooks and store stripe data in the database.
 
-
 ## Requirements
 
 - TODO
