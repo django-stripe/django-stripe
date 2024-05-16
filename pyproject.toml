@@ -9,8 +9,8 @@ description = "django-stripe creates Django models for Stripe objects, synchroni
 authors = ["Abe Hanoka <abe@habet.dev>"]
 license = "MIT"
 readme = "README.md"
-homepage = "https://github.com/abe-101/django-stripe"
-repository = "https://github.com/abe-101/django-stripe"
+homepage = "https://github.com/django-stripe/django-stripe"
+repository = "https://github.com/django-stripe/django-stripe"
 documentation = "https://django-stripe.readthedocs.io"
 packages = [{ include = "django_stripe", from = "src" }]
 classifiers = [
