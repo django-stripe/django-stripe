@@ -30,6 +30,7 @@ Changelog = "https://github.com/abe-101/django-stripe/releases"
 python = ">=3.9,<4.0"
 django = ">=3.2"
 click = ">=8.0.1"
+stripe = ">=9.6.0"
 
 [tool.poetry.dev-dependencies]
 
