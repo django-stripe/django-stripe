@@ -21,7 +21,13 @@
 
 ## Features
 
-- TODO
+Stripe is a fast moving target, and while maintaining a handful
+of django project that relies on stripe, I found myself repeatedly
+writing code to handle stripe webhooks, and storing stripe data in
+the database.
+This package aims to provide a simple way to handle
+stripe webhooks and store stripe data in the database.
+
 
 ## Requirements
 
