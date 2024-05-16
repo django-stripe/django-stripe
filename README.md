@@ -1,6 +1,6 @@
 # django-stripe
 
-[![PyPI](https://img.shields.io/pypi/v/ kiecutter.project_name }}.svg)][pypi status]
+[![PyPI](https://img.shields.io/pypi/v/django-stripe.svg)][pypi status]
 [![Status](https://img.shields.io/pypi/status/django-stripe.svg)][pypi status]
 [![Python Version](https://img.shields.io/pypi/pyversions/django-stripe)][pypi status]
 [![License](https://img.shields.io/pypi/l/django-stripe)][license]
