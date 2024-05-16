@@ -1,0 +1,20 @@
+{
+  "_checkout": "2023.10.2",
+  "_output_dir": "/home/thinkpad/repos/django-stripe",
+  "_repo_dir": "/home/thinkpad/.cookiecutters/cookiecutter-django-package",
+  "_template": "gh:OmenApps/cookiecutter-django-package",
+  "author": "Abe Hanoka",
+  "copyright_year": "2024",
+  "development_status": "Development Status :: 1 - Planning",
+  "docker_compose_python_version": "3.11",
+  "email": "abe@habet.dev",
+  "github_owner": "django-stripe",
+  "github_user": "abe-101",
+  "license": "MIT",
+  "package_description": "django-stripe creates Django models for Stripe objects, synchronizes data, and handles webhooks for updates.",
+  "package_name": "django_stripe",
+  "project_name": "django-stripe",
+  "use_playwright": "n",
+  "use_postgres": "y",
+  "version": "2024.05.1"
+}
