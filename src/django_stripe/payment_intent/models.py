@@ -1,9 +1,7 @@
-"""Module for PaymentIntent model."""
-
 from django_stripe.common.models import AbstractStripeModel
 
 
 class PaymentIntent(AbstractStripeModel):
-    """model for PaymentIntent."""
+    """A model for storing Stripe PaymentIntent objects. Inherits all fields and methods from `AbstractStripeModel`."""
 
     pass

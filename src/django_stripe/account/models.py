@@ -2,5 +2,6 @@ from django_stripe.common.models import AbstractStripeModel
 
 
 class Account(AbstractStripeModel):
-    # Add specific fields for Account here
+    """A model for storing Stripe Account objects. Inherits all fields and methods from `AbstractStripeModel`."""
+
     pass
