@@ -14,8 +14,8 @@
 
 [pypi status]: https://pypi.org/project/django-stripe/
 [read the docs]: https://django-stripe.readthedocs.io/
-[tests]: https://github.com/abe-101/django-stripe/actions?workflow=Tests
-[codecov]: https://app.codecov.io/gh/abe-101/django-stripe
+[tests]: https://github.com/django-stripe/django-stripe/actions?workflow=Tests
+[codecov]: https://app.codecov.io/gh/django-stripe/django-stripe
 [pre-commit]: https://github.com/pre-commit/pre-commit
 [black]: https://github.com/psf/black
 
@@ -66,11 +66,11 @@ This project was generated from [@OmenApps]'s [Cookiecutter Django Package] temp
 [@omenapps]: https://github.com/OmenApps
 [pypi]: https://pypi.org/
 [cookiecutter django package]: https://github.com/OmenApps/cookiecutter-django-package
-[file an issue]: https://github.com/abe-101/django-stripe/issues
+[file an issue]: https://github.com/django-stripe/django-stripe/issues
 [pip]: https://pip.pypa.io/
 
 <!-- github-only -->
 
-[license]: https://github.com/abe-101/django-stripe/blob/main/LICENSE
-[contributor guide]: https://github.com/abe-101/django-stripe/blob/main/CONTRIBUTING.md
+[license]: https://github.com/django-stripe/django-stripe/blob/main/LICENSE
+[contributor guide]: https://github.com/django-stripe/django-stripe/blob/main/CONTRIBUTING.md
 [command-line reference]: https://django-stripe.readthedocs.io/en/latest/usage.html
