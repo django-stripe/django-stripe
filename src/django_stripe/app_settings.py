@@ -8,4 +8,4 @@ class DjangoStripeSettings:
         self.STRIPE_WEBHOOK_SECRET = getattr(settings, "STRIPE_WEBHOOK_SECRET", "default_value")
 
 
-django_stripe_settings = DjangoStripeSettings()
+get_setting = DjangoStripeSettings()

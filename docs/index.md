@@ -20,5 +20,5 @@ reference
 contributing
 Code of Conduct <codeofconduct>
 License <license>
-Changelog <https://github.com/abe-101/django-stripe/releases>
+Changelog <https://github.com/django-sripe/django-stripe/releases>
 ```

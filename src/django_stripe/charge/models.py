@@ -1,6 +1,9 @@
+"""Charge model for storing Stripe Charge objects."""
+
 from django_stripe.common.models import AbstractStripeModel
 
 
 class Charge(AbstractStripeModel):
-    # Add specific fields for Charge here
+    """Charge model for storing Stripe Charge objects."""
+
     pass

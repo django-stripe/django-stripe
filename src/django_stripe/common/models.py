@@ -1,12 +1,14 @@
+"""Abstract model for storing Stripe objects."""
+
 import json
 
 import stripe
 from django.db import models
 
-from django_stripe.settings import django_stripe_settings
+from django_stripe.app_settings import get_setting
 
 
-client: stripe.StripeClient = stripe.StripeClient(django_stripe_settings.STRIPE_API_KEY)
+client: stripe.StripeClient = stripe.StripeClient(get_setting.STRIPE_API_KEY)
 
 
 class AbstractStripeModel(models.Model):

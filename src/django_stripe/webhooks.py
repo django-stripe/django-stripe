@@ -4,12 +4,12 @@ import stripe
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 
+from django_stripe.app_settings import get_setting
 from django_stripe.common.mapper import webhook_event_mapper
 from django_stripe.common.models import AbstractStripeModel
-from django_stripe.settings import django_stripe_settings
 
 
-client = stripe.StripeClient(django_stripe_settings.STRIPE_API_KEY)
+client = stripe.StripeClient(get_setting.STRIPE_API_KEY)
 
 
 @csrf_exempt
@@ -22,7 +22,7 @@ def handle_stripe_webhook(request):
     sig_header = request.headers.get("stripe-signature")
 
     try:
-        event = client.construct_event(payload, sig_header, django_stripe_settings.STRIPE_WEBHOOK_SECRET)
+        event = client.construct_event(payload, sig_header, get_setting.STRIPE_WEBHOOK_SECRET)
         print(event)
     except ValueError as e:
         return HttpResponse(f"Error parsing payload: {str(e)}", status=400)
