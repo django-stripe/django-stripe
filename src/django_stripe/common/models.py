@@ -1,11 +1,12 @@
 import json
 
 import stripe
-from django.conf import settings
 from django.db import models
 
+from django_stripe.settings import django_stripe_settings
 
-client: stripe.StripeClient = stripe.StripeClient(settings.STRIPE_API_KEY)
+
+client: stripe.StripeClient = stripe.StripeClient(django_stripe_settings.STRIPE_API_KEY)
 
 
 class AbstractStripeModel(models.Model):
