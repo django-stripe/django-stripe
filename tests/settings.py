@@ -16,6 +16,10 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 INSTALLED_APPS = [
     "src.django_stripe.apps.DjangoStripeConfig",
     "tests",
+    "django_stripe.account",
+    "django_stripe.charge",
+    "django_stripe.checkout_session",
+    "django_stripe.payment_intent",
 ]
 
 DATABASES = {
@@ -28,3 +32,5 @@ DATABASES = {
 USE_TZ = True
 DEBUG = True
 ROOT_URLCONF = "src.django_stripe.urls"
+
+STRIPE_API_KEY = "test_stripe_api_key"

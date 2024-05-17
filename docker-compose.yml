@@ -17,6 +17,8 @@ services:
     ports:
       - "8111:8111"
     command: /start
+    # volumes:
+    #   - ./src/django_stripe:/app/django_stripe
 
   postgres_test:
     image: postgres:15

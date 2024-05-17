@@ -37,7 +37,10 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "example_project.example",
-    "django_stripe",
+    "django_stripe.checkout_session",
+    "django_stripe.payment_intent",
+    "django_stripe.account",
+    "django_stripe.charge",
 ]
 
 MIDDLEWARE = [
