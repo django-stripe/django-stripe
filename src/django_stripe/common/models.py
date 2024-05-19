@@ -69,7 +69,9 @@ class AbstractStripeModel(models.Model):
         """
         data = event.data.object
         self.livemode = event.livemode
-        self.connect_account_id = event.account
+        account = getattr(event, "account", None)
+        if account:
+            self.connect_account_id = event.account
         self.data = data
         self.save()
 

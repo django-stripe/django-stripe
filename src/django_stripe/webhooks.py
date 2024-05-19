@@ -7,6 +7,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django_stripe.app_settings import get_setting
 from django_stripe.common.mapper import webhook_event_mapper
 from django_stripe.common.models import AbstractStripeModel
+from django_stripe.signals import get_signal
 
 
 client = stripe.StripeClient(get_setting.STRIPE_API_KEY)
@@ -23,7 +24,6 @@ def handle_stripe_webhook(request):
 
     try:
         event = client.construct_event(payload, sig_header, get_setting.STRIPE_WEBHOOK_SECRET)
-        print(event)
     except ValueError as e:
         return HttpResponse(f"Error parsing payload: {str(e)}", status=400)
     except stripe.error.SignatureVerificationError as e:
@@ -34,10 +34,13 @@ def handle_stripe_webhook(request):
         model_class: AbstractStripeModel = webhook_event_mapper.get(event.type)
 
         obj, created = model_class.objects.get_or_create(stripe_id=event.data.object.id)
-        obj.process_data(event.data.object)
+        obj.process_data(event)
+        signal = get_signal(event.type)
+        signal.send(sender=model_class, type=event.type, instance=obj)
         return HttpResponse("Webhook processed successfully", status=200)
     except ValueError as e:
         print(e)
         return HttpResponse(str(e), status=404)  # Model class not found
     except Exception as e:
-        return HttpResponse(f"Unhandled exception: {str(e)}", status=500)
+        raise e
+        # return HttpResponse(f"Unhandled exception: {str(e)}", status=500)

@@ -1,43 +1,49 @@
-# Usage
+# django-stripe Installation and Configuration
 
-## admin.py
+This document provides instructions for installing and configuring django-stripe in your Django project.
 
-```{eval-rst}
-.. automodule:: django_stripe.admin
-    :members:
+## Installation
+
+Install django-stripe using pip:
+
+```bash
+pip install django-stripe
 ```
 
-## apps.py
+## Configuration
 
-```{eval-rst}
-.. automodule:: django_stripe.apps
-    :members:
+### Add to `INSTALLED_APPS`
+
+Include the necessary django-stripe submodules in your `settings.py`. Only add the modules you need:
+
+```python
+INSTALLED_APPS = [
+    "django_stripe.checkout_session",
+    "django_stripe.payment_intent",
+    "django_stripe.account",
+    "django_stripe.charge",
+]
 ```
 
-## forms.py
+### Configure API Key and Webhook Secret
 
-```{eval-rst}
-.. automodule:: django_stripe.forms
-    :members:
+In your `settings.py`, set your Stripe API key and webhook secret:
+
+```python
+STRIPE_API_KEY = 'your_stripe_api_key_here'
+STRIPE_WEBHOOK_SECRET = 'your_stripe_webhook_secret_here'
 ```
 
-## models.py
+Replace `'your_stripe_api_key_here'` and `'your_stripe_webhook_secret_here'` with your actual credentials.
 
-```{eval-rst}
-.. automodule:: django_stripe.models
-    :members:
+### Setup Stripe Webhook Endpoint
+
+Configure a webhook in your Stripe dashboard to point to:
+
+```
+https://yourdomain.com/stripe/webhook/
 ```
 
-## views.py
+## Synchronization
 
-```{eval-rst}
-.. automodule:: django_stripe.views
-    :members:
-```
-
-## urls.py
-
-```{eval-rst}
-.. automodule:: django_stripe.urls
-    :members:
-```
+Once configured, django-stripe will synchronize Stripe objects (like charges, payment intents, etc.) to your database, based on the modules included in your `INSTALLED_APPS`.
