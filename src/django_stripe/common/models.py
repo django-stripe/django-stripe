@@ -20,12 +20,14 @@ class AbstractStripeModel(models.Model):
     Stripe objects such as charges, payments, or accounts.
 
     Attributes:
-        stripe_id (str): Unique identifier for the Stripe object. This is not the database ID.
-        livemode (bool): Indicates whether the object was created within Stripe's live mode.
-        data (dict): Stores the complete JSON representation of the Stripe object.
-        created_at (datetime): Timestamp indicating when the object was first created in the database.
-        updated_at (datetime): Timestamp indicating when the object was last updated in the database.
-        connect_account_id (str): The Stripe Connect account ID this object is associated with, if any.
+        stripe_id (:class:`django.db.models.CharField`): Unique identifier for the Stripe object.
+        livemode (:class:`django.db.models.BooleanField`): Indicates whether the object was created within Stripe's live mode.
+        data (:class:`django.db.models.JSONField`): Stores the complete JSON representation of the Stripe object.
+        created_at (:class:`django.db.models.DateTimeField`): Timestamp indicating when the object was first created.
+        updated_at (:class:`django.db.models.DateTimeField`): Timestamp indicating when the object was last updated.
+        connect_account_id (:class:`django.db.models.CharField`): The Stripe Connect account ID this object is associated with, if any. # noqa B950
+
+
 
     The class is abstract and should not be instantiated directly.
     """
@@ -71,20 +73,20 @@ class AbstractStripeModel(models.Model):
         self.data = data
         self.save()
 
-    def retrieve_data_from_stripe(self, id: str) -> json:
+    def retrieve_data_from_stripe(self) -> json:
         """Retrieves the latest data from Stripe for a specific object ID and updates the model.
 
         This method directly interacts with the Stripe API to fetch the latest data for
         a specific object, updating the model's data field and saving the changes.
 
-        Args:
-            id (str): The unique identifier of the Stripe object.
 
         Returns:
             json: The JSON data retrieved from the Stripe API as a dictionary.
         """
-        class_name = self.__class__.__name__.lower()
-        api_method = getattr(client, class_name).retrieve
-        self.data = api_method(id)
+        if not hasattr(self, "stripe_sdk_name"):
+            raise ValueError("stripe_sdk_name must be defined in the subclass.")
+        api_resource = getattr(client, self.stripe_sdk_name)
+        response = api_resource.retrieve(self.stripe_id)
+        self.data = response
         self.save()
-        return self.data
+        return response

@@ -19,6 +19,12 @@ extensions = [
     "sphinx.ext.napoleon",
     "sphinx_click",
     "myst_parser",
+    "sphinx.ext.intersphinx",
 ]
 autodoc_typehints = "description"
 html_theme = "furo"
+
+intersphinx_mapping = {
+    "python": ("https://docs.python.org/3/", None),
+    "django": ("https://docs.djangoproject.com/en/stable/", "https://docs.djangoproject.com/en/stable/_objects/"),
+}
