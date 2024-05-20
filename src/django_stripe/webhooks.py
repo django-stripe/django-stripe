@@ -35,6 +35,7 @@ def handle_stripe_webhook(request):
 
         obj, created = model_class.objects.get_or_create(stripe_id=event.data.object.id)
         obj.process_data(event)
+
         signal = get_signal(event.type)
         signal.send(sender=model_class, type=event.type, instance=obj)
         return HttpResponse("Webhook processed successfully", status=200)

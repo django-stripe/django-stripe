@@ -81,6 +81,10 @@ class AbstractStripeModel(models.Model):
         This method directly interacts with the Stripe API to fetch the latest data for
         a specific object, updating the model's data field and saving the changes.
 
+        Raises:
+            ValueError: If `stripe_sdk_name` is not defined in the subclass.
+
+
 
         Returns:
             json: The JSON data retrieved from the Stripe API as a dictionary.
