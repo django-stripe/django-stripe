@@ -1,10 +1,22 @@
+from django.apps import apps
+
 from django_stripe.account.models import Account
 from django_stripe.charge.models import Charge
 from django_stripe.checkout_session.models import CheckoutSession
 from django_stripe.payment_intent.models import PaymentIntent
 
 
-webhook_event_mapper = {
+def is_model_app_installed(model):
+    """Check if the app containing the given model is installed."""
+    if model is None:
+        return False
+    app_config = apps.get_containing_app_config(model.__module__)
+    if app_config:
+        return apps.is_installed(app_config.name)
+    return False
+
+
+event_to_model = {
     "account.application.authorized": None,  # Application
     "account.application.deauthorized": None,  # Application
     "account.external_account.created": None,  # External account (e.g., card or bank account)
@@ -207,4 +219,9 @@ webhook_event_mapper = {
     "transfer.created": None,  # Transfer
     "transfer.reversed": None,  # Transfer
     "transfer.updated": None,  # Transfer
+}
+
+
+webhook_event_mapper = {
+    event: model if is_model_app_installed(model) else None for event, model in event_to_model.items()
 }

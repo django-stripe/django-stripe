@@ -1,5 +1,7 @@
 """Module for handling Stripe webhooks."""
 
+import logging
+
 import stripe
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
@@ -8,6 +10,9 @@ from django_stripe.app_settings import get_setting
 from django_stripe.common.mapper import webhook_event_mapper
 from django_stripe.common.models import AbstractStripeModel
 from django_stripe.signals import get_signal
+
+
+logger = logging.getLogger(__name__)
 
 
 client = stripe.StripeClient(get_setting.STRIPE_API_KEY)
@@ -32,6 +37,9 @@ def handle_stripe_webhook(request):
     # Handle the event
     try:
         model_class: AbstractStripeModel = webhook_event_mapper.get(event.type)
+        if not model_class:
+            logger.debug(f"Unhandled event type: {event.type}")
+            return HttpResponse("Unhandled event type", status=200)
 
         obj, created = model_class.objects.get_or_create(stripe_id=event.data.object.id)
         obj.process_data(event)
