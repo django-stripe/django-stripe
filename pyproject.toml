@@ -3,7 +3,7 @@ requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
-name = "django-stripe"
+name = "django-awesome-stripe"
 version = "2024.05.1"
 description = "django-stripe creates Django models for Stripe objects, synchronizes data, and handles webhooks for updates."
 authors = ["Abe Hanoka <abe@habet.dev>"]
