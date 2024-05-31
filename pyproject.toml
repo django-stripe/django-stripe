@@ -4,7 +4,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
 name = "django-awesome-stripe"
-version = "2024.05.1"
+version = "2024.05.2"
 description = "django-stripe creates Django models for Stripe objects, synchronizes data, and handles webhooks for updates."
 authors = ["Abe Hanoka <abe@habet.dev>"]
 license = "MIT"
